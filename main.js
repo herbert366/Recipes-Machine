@@ -132,6 +132,18 @@ const dbRecipes = [
   },
 ]
 
+function getRecipesWithoutXTolerance(tolerance) {
+  return dbRecipes.filter(recipe => {
+    let countTolerance = 0
+    const { ingredients } = recipe
+    ingredients.forEach(ingredient => {
+      if (!ingredientsUser.includes(ingredient)) countTolerance++
+    })
+    if (countTolerance > tolerance) return false
+    else return true
+  })
+}
+
 const ingredientsUser = [
   'ovo',
   'cenoura',
@@ -145,4 +157,9 @@ const recipesThatUserCanMake = dbRecipes.filter(recipe => {
     return recipe.ingredients.includes(ingredient)
   })
 })
+
+const recipesWithoutXIngredientes = getRecipesWithoutXTolerance(5)
+
 console.log(recipesThatUserCanMake)
+console.log('-----------------------------')
+console.log(recipesWithoutXIngredientes)
