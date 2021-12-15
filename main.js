@@ -160,6 +160,15 @@ const recipesThatUserCanMake = dbRecipes.filter(recipe => {
 
 const recipesWithoutXIngredientes = getRecipesWithoutXTolerance(5)
 
-console.log(recipesThatUserCanMake)
 console.log('-----------------------------')
+console.log('Se comprar uns ingredientes pode fazer:')
 console.log(recipesWithoutXIngredientes)
+
+console.log('-----------------------------')
+
+if (ingredientsUser.length === 0) {
+  console.log('Não há ingredientes para fazer receitas')
+} else {
+  console.log('Você pode fazer com o que tem ai:')
+  console.log(recipesThatUserCanMake)
+}
